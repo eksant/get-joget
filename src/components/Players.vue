@@ -7,8 +7,16 @@
           {{player.name.name}}
           <br>
           MOVES
-          <input type="text" name="" value="" v-model="moves">
+          <br>
           SCORE : {{score}}
+          <input type="text" name="" value="" v-model="moves">
+          <br>
+          <br>
+          <div class="columns">
+            <div class="column is-1 is-primary" v-for='move in moves' style="background-color:burlywood;border:aqua;border-style:solid">
+              {{move}}
+            </div>
+          </div>
         </div>
       </div>
       <br><br><br><br>
@@ -41,12 +49,16 @@ export default {
         result.push(obj)
       }
       this.players = result
+    },
+    getColor () {
+
     }
   },
   watch: {
     moves: function (newVal,oldVal){
       console.log(newVal.length);
       if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+        console.log(newVal.length-1);
         this.moves = ''
       }
       if (newVal === this.globalArrow) {
@@ -57,6 +69,11 @@ export default {
       }
     }
   }
+  // computed: {
+  //   checkArrow () {
+  //     return this.globalArrow
+  //   }
+  // }
   // beforeCreate () {
   //   var users = this.$db.ref('users')
   //   let self = this
