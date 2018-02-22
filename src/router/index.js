@@ -1,21 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Players from '@/components/Players'
+// import HelloWorld from '@/components/HelloWorld'
+import RoomGame from '@/components/RoomGame'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
+      meta: {},
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/players',
-      name: 'players',
-      component: Players
+      name: 'RoomGame',
+      component: RoomGame
     }
   ]
 })
