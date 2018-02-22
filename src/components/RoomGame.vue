@@ -12,6 +12,7 @@
           </div>
           <div class="column is-one-quarter">
 
+<<<<<<< HEAD
             <div class="dropdown is-hoverable is-large middle">
               <div class="dropdown-trigger">
                 <button class="button is-primary is-inverted is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -38,11 +39,79 @@
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
                 </button>
+=======
+    <div class="video-background">
+      <div class="video-foreground">
+        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- box player -->
+    <section class="section content-game">
+      <div class="columns is-mobile is-centered">
+        <div class="column transparant">
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Player #One</strong><br>
+                    <small>Score</small><br>
+                    <small>[A S D W D W]</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="column transparant">
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Player #One</strong><br>
+                    <small>Score</small><br>
+                    <small>[A S D W D W]</small>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="column transparant">
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Player #One</strong><br>
+                    <small>Score</small><br>
+                    <small>[A S D W D W]</small>
+                  </p>
+                </div>
+>>>>>>> Added background video youtube
               </div>
             </div>
 
           </div>
         </div>
+<<<<<<< HEAD
       </div>
     </section>
 
@@ -57,6 +126,9 @@
       <div class="columns is-mobile is-centered">
 
         <div class="column transparant" v-for='player in players'>
+=======
+        <div class="column transparant">
+>>>>>>> Added background video youtube
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -88,7 +160,11 @@
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
+<<<<<<< HEAD
             {{globalArrow}}
+=======
+
+>>>>>>> Added background video youtube
           </div>
         </div>
       </div>
@@ -139,9 +215,12 @@ export default {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
+<<<<<<< HEAD
 .middle {
   padding-top: 30px;
 }
+=======
+>>>>>>> Added background video youtube
 .content-game {
   position: relative;
   height: 500px;
