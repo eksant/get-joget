@@ -14,10 +14,16 @@
       </div>
     </section>
 
+    <div class="video-background">
+      <div class="video-foreground">
+        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
     <!-- box player -->
     <section class="section content-game">
       <div class="columns is-mobile is-centered">
-        <div class="column">
+        <div class="column transparant">
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -37,7 +43,7 @@
             </article>
           </div>
         </div>
-        <div class="column">
+        <div class="column transparant">
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -57,7 +63,7 @@
             </article>
           </div>
         </div>
-        <div class="column">
+        <div class="column transparant">
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -77,7 +83,7 @@
             </article>
           </div>
         </div>
-        <div class="column">
+        <div class="column transparant">
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -102,8 +108,8 @@
       <!-- arrow game -->
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
-          <div class="box">
-            
+          <div class="box transparant">
+
           </div>
         </div>
       </div>
@@ -117,14 +123,36 @@ export default {
 </script>
 
 <style>
+.transparant {
+  /* background: rgba(76, 175, 80, 0.8); */
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
 .content-game {
   position: relative;
-  height: 600px;
+  height: 500px;
 }
 
 .arrow-game {
   position: absolute;
   width: 100%;
-  bottom: 10px;
+  bottom: 50px;
+}
+
+* { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 </style>
