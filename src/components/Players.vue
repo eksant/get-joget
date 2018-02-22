@@ -7,6 +7,7 @@
           {{player.name.name}}
           <br>
           MOVES
+<<<<<<< HEAD
           <br>
           SCORE : {{score}}
           <input type="text" name="" value="" v-model="moves">
@@ -17,6 +18,10 @@
               {{move}}
             </div>
           </div>
+=======
+          <input type="text" name="" value="" v-model="moves">
+          SCORE : {{score}}
+>>>>>>> logic done
         </div>
       </div>
       <br><br><br><br>
@@ -49,31 +54,44 @@ export default {
         result.push(obj)
       }
       this.players = result
+<<<<<<< HEAD
     },
     getColor () {
 
+=======
+>>>>>>> logic done
     }
   },
   watch: {
     moves: function (newVal,oldVal){
       console.log(newVal.length);
       if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+<<<<<<< HEAD
         console.log(newVal.length-1);
         this.moves = ''
       }
       if (newVal === this.globalArrow) {
         this.moves = ''
+=======
+        this.moves = ''
+      }
+      if (newVal === this.globalArrow) {
+        console.log('MENANG');
+>>>>>>> logic done
         this.score += 10
       } else {
         console.log(newVal);
       }
     }
   }
+<<<<<<< HEAD
   // computed: {
   //   checkArrow () {
   //     return this.globalArrow
   //   }
   // }
+=======
+>>>>>>> logic done
   // beforeCreate () {
   //   var users = this.$db.ref('users')
   //   let self = this
