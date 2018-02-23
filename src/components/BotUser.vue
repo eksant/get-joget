@@ -11,6 +11,7 @@
             <img src="../assets/get-joget.png" alt="Logo Get Joget" style="height:96px;">
           </div>
         </div>
+        <button @click="logout" class="button is-danger">Logout</button>
       </div>
     </section>
 
@@ -108,6 +109,18 @@ export default {
     },
     remove (key) {
       this.$db.ref("users").child(key).remove();
+    },
+    logout(){
+      let userId = localStorage.getItem('id')
+      this.$db.ref(`users/${userId}`).update({
+        isLogin : false
+      })
+      localStorage.clear()
+      this.$notify({
+        type: 'success',
+        text: 'Log out success'
+      })
+      this.$router.push({name: 'SignIn'})
     }
   },
 
