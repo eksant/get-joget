@@ -58,6 +58,14 @@
         self = this;
         this.loginProcess(function (isLogin, token, user) {
           localStorage.setItem('token', token)
+          console.log(user)
+          localStorage.setItem('id', user.id)
+          localStorage.setItem('name', user.name)
+          localStorage.setItem('email', user.email)
+          localStorage.setItem('score', user.score)
+          self.$db.ref(`users/${user.id}`).update({
+            isLogin : true
+          })
           if (token !== null) {
             self.$router.push({
               name: 'RoomGame'
@@ -90,7 +98,8 @@
             let user = {
               id: people[idx].id,
               name: people[idx].name,
-              email: people[idx].email
+              email: people[idx].email,
+              score: people[idx].score
             }
             let token = jwt.sign(user, 'kmzway87aa')
             self.$store.state.token = token
