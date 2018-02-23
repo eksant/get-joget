@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="tes">
     <button type="button" name="button" @click="generate">Generate Arrow</button>
     <input type="text" name="" value="" @keyup="tes" v-model="keyArrow">
     <br><br>
