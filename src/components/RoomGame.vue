@@ -147,7 +147,6 @@
     <!-- box player -->
     <section class="section content-game">
       <div class="columns is-mobile is-centered">
-
         <div class="column transparant" v-for='player in players'>
 =======
         <div class="column transparant">
@@ -169,8 +168,8 @@
                     <strong>{{player.player.name}}</strong><br>
                     <small>Score :</small> {{player.player.score}}<br>
                     <small>
-                      <input type="text" name="" value="" v-model="moves">
-                      <div class="column is-1 is-primary" v-for='move in moves' style="background-color:burlywood;border:aqua;border-style:solid">
+                      <input type="text" name="" value="" v-model="player.player.moves">
+                      <div class="column is-1 is-primary" v-for='move in player.player.moves' style="background-color:burlywood;border:aqua;border-style:solid">
                         {{move}}
                       </div>
 
@@ -276,31 +275,70 @@ export default {
       // });
     },
     update () {
-      this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").set({
-          email: 'mluthfi.com',
-          name: 'Jenndol',
-          score: 10
+      this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").update({
+          score: 50
       });
     },
     remove (key) {
       this.$db.ref("users").child(key).remove();
     }
   },
+
+  // watch: {
+  //   players: [
+  //       function handle1 (val, oldVal) { /* ... */ },
+  //       function handle2 (val, oldVal) { /* ... */ }
+  //     ],
+  //
+  //     'players.moves': function (val) {
+  //       console.log(val);
+  //     },
+  //     deep: true
+  //
+  //   // {
+  //   //   handler: function (newVal,oldVal){
+  //   //     console.log(newVal.length);
+  //   //     if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+  //   //       console.log(newVal.length-1);
+  //   //       this.moves = ''
+  //   //     }
+  //   //     if (newVal === this.globalArrow) {
+  //   //       this.moves = ''
+  //   //       this.score += 10
+  //   //     } else {
+  //   //       console.log(newVal);
+  //   //     }
+  //   //   },
+  //   //   deep: true
+  //   // }
+  // },
   watch: {
-    moves: function (newVal,oldVal){
-      console.log(newVal.length);
-      if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
-        console.log(newVal.length-1);
-        this.moves = ''
-      }
-      if (newVal === this.globalArrow) {
-        this.moves = ''
-        this.score += 10
-      } else {
-        console.log(newVal);
-      }
+    players: {
+      handler: function (newVal,oldVal){
+
+          this.$db.ref("users").on("child_added", function (snapshot) {
+            console.log(snapshot.val());
+            // this.$db.ref("users").remove()
+            // this.$db.ref("users").push(snapshot.val())
+          })
+
+        // console.log(result);
+        // if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+        //   console.log(newVal.length-1);
+        //   this.moves = ''
+        // }
+        // if (newVal === this.globalArrow) {
+        //   this.moves = ''
+        //   this.score += 10
+        // } else {
+        //   console.log(newVal);
+        // }
+      },
+      deep: true
     }
   },
+
+
   created: function () {
   var users = this.$db.ref('users')
    let self = this
@@ -311,7 +349,7 @@ export default {
    })
    // this.create()
    // this.remove('-L6-oiD-gpWadM3_IF56')
-   // this.update()
+   this.update()
    // users.set({
    //   email: 'tobi@gmail.com',
    //   name: 'Lalala',
