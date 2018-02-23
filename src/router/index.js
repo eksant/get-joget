@@ -1,41 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
-// import HelloWorld from '@/components/HelloWorld'
-import RoomGame from '@/components/RoomGame'
-<<<<<<< HEAD
-=======
-import HelloWorld from '@/components/HelloWorld'
 import ArrowGenerator from '@/components/ArrowGenerator'
->>>>>>> arrow-generator
-=======
+import RoomGame from '@/components/RoomGame'
 import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import SignIn from '@/components/SignIn'
->>>>>>> jwt, auth system, validation
-
+import BotUser from '@/components/BotUser'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
     {
-      meta: {},
-      path: '/',
-<<<<<<< HEAD
-      name: 'RoomGame',
-      component: RoomGame
-=======
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
       path: '/arrow-generator',
       name: 'ArrowGenerator',
       component: ArrowGenerator
-<<<<<<< HEAD
->>>>>>> arrow-generator
-=======
     },
     {
       path: '/register',
@@ -46,7 +25,17 @@ export default new Router({
       path: '/signin',
       name: 'SignIn',
       component: SignIn
->>>>>>> jwt, auth system, validation
+    },
+    {
+      path: '/botuser',
+      name: 'BotUser',
+      compoennt: BotUser
+    }
+    {
+      meta: {},
+      path: '/',
+      name: 'RoomGame',
+      component: RoomGame
     }
   ]
 })
