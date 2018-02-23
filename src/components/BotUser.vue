@@ -11,7 +11,10 @@
             <img src="../assets/get-joget.png" alt="Logo Get Joget" style="height:96px;">
           </div>
         </div>
+<<<<<<< HEAD
         <button @click="logout" class="button is-danger">Logout</button>
+=======
+>>>>>>> coba merge
       </div>
     </section>
 
@@ -109,6 +112,7 @@ export default {
     },
     remove (key) {
       this.$db.ref("users").child(key).remove();
+<<<<<<< HEAD
     },
     logout(){
       let userId = localStorage.getItem('id')
@@ -121,6 +125,8 @@ export default {
         text: 'Log out success'
       })
       this.$router.push({name: 'SignIn'})
+=======
+>>>>>>> coba merge
     }
   },
 
