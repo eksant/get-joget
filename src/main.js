@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Notif from 'vue-notification'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 import App from './App'
 import router from './router'
 import store from './vuex/index'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
+
 var firebase = require('firebase')
 var config = {
   apiKey: 'AIzaSyAZDct8zsXkFEYkt6LtxTHNHVllK_ap_1A',
@@ -21,6 +23,7 @@ Vue.config.productionTip = false
 Vue.use(Buefy)
 Vue.use(router)
 Vue.use(Notif)
+Vue.use(VueYouTubeEmbed)
 Vue.prototype.$db = firebase.database()
 Vue.prototype.$axios = axios.create({
   // baseURL: 'http://localhost:3000/api'
