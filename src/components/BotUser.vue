@@ -109,10 +109,13 @@
   </section>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 export default {
 =======
 
+=======
+>>>>>>> merge complete
 <script>
 export default {
 <<<<<<< HEAD
