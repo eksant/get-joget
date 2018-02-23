@@ -247,6 +247,16 @@ export default {
     }
   },
   methods: {
+    checkIsLogin(dataPlayer) {
+      // console.log('INI CEK',dataPlayer);
+      let loginPlayer = dataPlayer.filter(e => {
+        return e.player.isLogin == true
+      })
+
+      // this.players = loginPlayer
+      this.players = loginPlayer.splice(0,4)
+      // console.log(data);
+    },
     firebaseConverter (snapshot) {
       let result = []
       for (let a in snapshot){
@@ -255,7 +265,7 @@ export default {
         obj.player = snapshot[a]
         result.push(obj)
       }
-      this.players = result
+      this.checkIsLogin(result)
     },
     create () {
       // this.$db.ref("users").push({
@@ -271,7 +281,7 @@ export default {
           name: 'Jenndol',
           score: 10
       });
-      },
+    },
     remove (key) {
       this.$db.ref("users").child(key).remove();
     }
