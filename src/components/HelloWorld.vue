@@ -24,8 +24,6 @@ export default {
     var users = this.$db.ref('users')
     users.on('value', function (snapshot) {
       console.log(snapshot.val())
-      // this.datas.push(snapshot.val())
-      // this.datas.push(snapshot.val())
     })
   },
   methods: {
