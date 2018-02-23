@@ -50,7 +50,8 @@
         form: {
           name: null,
           email: null,
-          password: null
+          password: null,
+          score: 0
         }
       }
     },
