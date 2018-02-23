@@ -139,7 +139,6 @@ export default {
     }
   },
 
-
   created: function () {
   var users = this.$db.ref('users')
    let self = this
