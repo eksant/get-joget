@@ -62,7 +62,7 @@ export default {
         this.moves = ''
       }
       if (newVal === this.globalArrow) {
-        console.log('MENANG');
+        this.moves = ''
         this.score += 10
       } else {
         console.log(newVal);
