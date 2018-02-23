@@ -24,10 +24,9 @@ Vue.use(Buefy)
 Vue.use(router)
 Vue.use(Notif)
 Vue.use(VueYouTubeEmbed)
+
 Vue.prototype.$db = firebase.database()
-Vue.prototype.$axios = axios.create({
-  // baseURL: 'http://localhost:3000/api'
-})
+
 
 /* eslint-disable no-new */
 new Vue({
