@@ -30,6 +30,7 @@ export default {
       })
     },
     loginProcess: function (callback) {
+      self = this
       let users = this.$db.ref('users')
       let form = this.form
 
@@ -56,9 +57,10 @@ export default {
             email: people[idx].email
           }
           let token = jwt.sign(user, 'kmzway87aa')
+          self.$store.state.token = token
           callback(true, token, user)
         } else {
-          callback(false)
+          callback(false, null, null)
         }
       })
     }

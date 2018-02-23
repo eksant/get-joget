@@ -1,5 +1,6 @@
 const state = {
-  rooms: null
+  rooms: null,
+  token: null
 }
 
 export default state
