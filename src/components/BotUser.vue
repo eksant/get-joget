@@ -11,6 +11,7 @@
             <img src="../assets/get-joget.png" alt="Logo Get Joget" style="height:96px;">
           </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           <div class="column is-one-quarter">
 
@@ -45,6 +46,8 @@
 
           </div>
 >>>>>>> before merge bikin bot user
+=======
+>>>>>>> merge complete
         </div>
       </div>
     </section>
@@ -52,10 +55,14 @@
     <div class="video-background">
       <div class="video-foreground">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
 =======
         <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
 >>>>>>> before merge bikin bot user
+=======
+        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+>>>>>>> merge complete
       </div>
     </div>
 
@@ -109,6 +116,7 @@ export default {
 <script>
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
   data () {
     return {
       videoId: '4WD01RMtloI'
@@ -142,6 +150,8 @@ export default {
     }
 =======
 >>>>>>> before merge bikin bot user
+=======
+>>>>>>> merge complete
   data: function () {
     return {
       players: '',
@@ -261,9 +271,12 @@ export default {
    //   scofe: {}
    // })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> merge done
 >>>>>>> before merge bikin bot user
+=======
+>>>>>>> merge complete
   }
 }
 </script>
@@ -275,11 +288,14 @@ export default {
   filter: alpha(opacity=70);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .middle {
   padding-top: 30px;
 }
 >>>>>>> before merge bikin bot user
+=======
+>>>>>>> merge complete
 .content-game {
   position: relative;
   height: 500px;
