@@ -71,6 +71,7 @@
     <!-- box player -->
     <section class="section content-game">
       <div class="columns is-mobile is-centered">
+<<<<<<< HEAD
         <div class="column transparant">
           <div class="box">
             <article class="media">
@@ -151,6 +152,10 @@
 =======
         <div class="column transparant">
 >>>>>>> Added background video youtube
+=======
+
+        <div class="column transparant" v-for='player in players'>
+>>>>>>> merge done
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -183,10 +188,14 @@
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
 <<<<<<< HEAD
+<<<<<<< HEAD
             {{globalArrow}}
 =======
 
 >>>>>>> Added background video youtube
+=======
+            {{globalArrow}}
+>>>>>>> merge done
           </div>
         </div>
       </div>
@@ -196,6 +205,7 @@
 
 <script>
 export default {
+<<<<<<< HEAD
   data () {
     return {
       videoId: '4WD01RMtloI'
@@ -227,6 +237,77 @@ export default {
         return this.$store.state.rooms
       }
     }
+=======
+  data: function () {
+    return {
+      players: '',
+      globalArrow: 'WASDASWSA',
+      moves: '',
+      score: 0
+    }
+  },
+  methods: {
+    firebaseConverter (snapshot) {
+      let result = []
+      for (let a in snapshot){
+        let obj = {}
+        obj.id = a
+        obj.player = snapshot[a]
+        result.push(obj)
+      }
+      this.players = result
+    },
+    create () {
+      // this.$db.ref("users").push({
+      //     email: 'eko@com',
+      //     password: '1123',
+      //     name: 'Eko',
+      //     score: 0
+      // });
+    },
+    update () {
+      this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").set({
+          email: 'mluthfi.com',
+          name: 'Jenndol',
+          score: 10
+      });
+      },
+    remove (key) {
+      this.$db.ref("users").child(key).remove();
+    }
+  },
+  watch: {
+    moves: function (newVal,oldVal){
+      console.log(newVal.length);
+      if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+        console.log(newVal.length-1);
+        this.moves = ''
+      }
+      if (newVal === this.globalArrow) {
+        this.moves = ''
+        this.score += 10
+      } else {
+        console.log(newVal);
+      }
+    }
+  },
+  created: function () {
+  var users = this.$db.ref('users')
+   let self = this
+   users.on('value', function (snapshot) {
+     let playerData = snapshot.val()
+     self.firebaseConverter(playerData)
+     console.log(snapshot.val());
+   })
+   // this.create()
+   // this.remove('-L6-oiD-gpWadM3_IF56')
+   // this.update()
+   // users.set({
+   //   email: 'tobi@gmail.com',
+   //   name: 'Lalala',
+   //   scofe: {}
+   // })
+>>>>>>> merge done
   }
 }
 </script>
