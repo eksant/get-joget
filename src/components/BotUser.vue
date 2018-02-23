@@ -12,6 +12,7 @@
           </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           <div class="column is-one-quarter">
 
@@ -48,12 +49,15 @@
 >>>>>>> before merge bikin bot user
 =======
 >>>>>>> merge complete
+=======
+>>>>>>> add botuser
         </div>
       </div>
     </section>
 
     <div class="video-background">
       <div class="video-foreground">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
@@ -63,6 +67,9 @@
 =======
         <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
 >>>>>>> merge complete
+=======
+        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+>>>>>>> add botuser
       </div>
     </div>
 
@@ -110,6 +117,7 @@
 </template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 export default {
 =======
@@ -155,6 +163,10 @@ export default {
 >>>>>>> before merge bikin bot user
 =======
 >>>>>>> merge complete
+=======
+<script>
+export default {
+>>>>>>> add botuser
   data: function () {
     return {
       players: '',
@@ -275,11 +287,14 @@ export default {
    // })
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> merge done
 >>>>>>> before merge bikin bot user
 =======
 >>>>>>> merge complete
+=======
+>>>>>>> add botuser
   }
 }
 </script>
@@ -292,6 +307,7 @@ export default {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .middle {
   padding-top: 30px;
@@ -299,6 +315,8 @@ export default {
 >>>>>>> before merge bikin bot user
 =======
 >>>>>>> merge complete
+=======
+>>>>>>> add botuser
 .content-game {
   position: relative;
   height: 500px;
