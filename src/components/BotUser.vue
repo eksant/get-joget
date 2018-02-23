@@ -40,13 +40,6 @@
                   <p>
                     <strong>{{player.player.name}}</strong><br>
                     <small>Score :</small> {{player.player.score}}<br>
-                    <small>
-                      <input type="text" name="" value="" v-model="player.player.moves">
-                      <div class="column is-1 is-primary" v-for='move in player.player.moves' style="background-color:burlywood;border:aqua;border-style:solid">
-                        {{move}}
-                      </div>
-
-                    </small>
                   </p>
                 </div>
               </div>
@@ -56,6 +49,14 @@
       </div>
 
       <!-- arrow game -->
+      <div class="column is-half is-offset-one-quarter">
+        <div class="box transparant">
+           <input type="text" name="" value="" v-model="moves">
+        </div>
+      </div>
+
+
+
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
@@ -97,14 +98,6 @@ export default {
       }
       this.checkIsLogin(result)
     },
-    create () {
-      // this.$db.ref("users").push({
-      //     email: 'eko@com',
-      //     password: '1123',
-      //     name: 'Eko',
-      //     score: 0
-      // });
-    },
     update () {
       this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").update({
           score: 50
@@ -129,58 +122,20 @@ export default {
 >>>>>>> coba merge
     }
   },
-
-  // watch: {
-  //   players: [
-  //       function handle1 (val, oldVal) { /* ... */ },
-  //       function handle2 (val, oldVal) { /* ... */ }
-  //     ],
-  //
-  //     'players.moves': function (val) {
-  //       console.log(val);
-  //     },
-  //     deep: true
-  //
-  //   // {
-  //   //   handler: function (newVal,oldVal){
-  //   //     console.log(newVal.length);
-  //   //     if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
-  //   //       console.log(newVal.length-1);
-  //   //       this.moves = ''
-  //   //     }
-  //   //     if (newVal === this.globalArrow) {
-  //   //       this.moves = ''
-  //   //       this.score += 10
-  //   //     } else {
-  //   //       console.log(newVal);
-  //   //     }
-  //   //   },
-  //   //   deep: true
-  //   // }
-  // },
   watch: {
-    players: {
-      handler: function (newVal,oldVal){
-
-          this.$db.ref("users").on("child_added", function (snapshot) {
-            console.log(snapshot.val());
-            // this.$db.ref("users").remove()
-            // this.$db.ref("users").push(snapshot.val())
-          })
-
-        // console.log(result);
-        // if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
-        //   console.log(newVal.length-1);
-        //   this.moves = ''
-        // }
-        // if (newVal === this.globalArrow) {
-        //   this.moves = ''
-        //   this.score += 10
-        // } else {
-        //   console.log(newVal);
-        // }
-      },
-      deep: true
+    moves: function(newVal,oldVal) {
+      if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+        console.log(newVal.length-1);
+        this.moves = ''
+      }
+      if (newVal === this.globalArrow) {
+        this.moves = ''
+        this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").update({
+            score: 70
+        });
+      } else {
+        console.log(newVal);
+      }
     }
   },
 
@@ -195,7 +150,7 @@ export default {
    })
    // this.create()
    // this.remove('-L6-oiD-gpWadM3_IF56')
-   this.update()
+   // this.update()
    // users.set({
    //   email: 'tobi@gmail.com',
    //   name: 'Lalala',
