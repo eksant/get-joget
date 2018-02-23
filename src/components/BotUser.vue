@@ -252,14 +252,6 @@ export default {
      console.log(snapshot.val());
    })
    this.generate()
-   // this.create()
-   // this.remove('-L6-oiD-gpWadM3_IF56')
-   // this.update()
-   // users.set({
-   //   email: 'tobi@gmail.com',
-   //   name: 'Lalala',
-   //   scofe: {}
-   // })
   }
 }
 </script>
