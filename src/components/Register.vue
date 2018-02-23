@@ -24,8 +24,12 @@
     },
     methods: {
       validateEmail(email) {
+<<<<<<< HEAD
         var re =
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+=======
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+>>>>>>> jwt, auth system, validation
         return re.test(String(email).toLowerCase());
       },
       register() {
@@ -51,12 +55,17 @@
           let idx = people.findIndex(function (element) {
             return (element.email == form.email)
           })
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> jwt, auth system, validation
           if (self.validateEmail(self.form.email) == true) {
             if (idx == -1) {
               tableUser.push(self.form)
                 .then(payload => {
                   console.log('register success')
+<<<<<<< HEAD
                   self.$notify({
                     type: 'success',
                     text: 'Register success'
@@ -82,6 +91,30 @@
               type: 'error',
               text: 'Email format you entered is wrong'
             })
+=======
+
+                  // this.$notify({
+                  //   type: 'success',
+                  //   text: 'Register success'
+                  // })
+                })
+                .catch(error => {
+                  console.log(error.message)
+                  // this.$notify({
+                  //   type: 'error',
+                  //   text: 'An error occured'
+                  // })
+                })
+            } else {
+              console.log('Email you entered already exists')
+              // this.$notify({
+              //   type: 'error',
+              //   text: 'Email you entered already exists'
+              // })
+            }
+          } else {
+            console.log('Email format you entered is wrong')
+>>>>>>> jwt, auth system, validation
           }
         })
       }
