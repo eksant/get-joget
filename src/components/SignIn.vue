@@ -68,7 +68,7 @@
           })
           if (token !== null) {
             self.$router.push({
-              name: 'RoomGame'
+              name: 'BotUser'
             })
           }
         })

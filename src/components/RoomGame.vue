@@ -55,7 +55,8 @@
     <!-- box player -->
     <section class="section content-game">
       <div class="columns is-mobile is-centered">
-        <div class="column transparant">
+
+        <div class="column transparant" v-for='player in players'>
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -66,69 +67,15 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
+                    <strong>{{player.player.name}}</strong><br>
+                    <small>Score :</small> {{player.player.score}}<br>
+                    <small>
+                      <input type="text" name="" value="" v-model="moves">
+                      <div class="column is-1 is-primary" v-for='move in moves' style="background-color:burlywood;border:aqua;border-style:solid">
+                        {{move}}
+                      </div>
+
+                    </small>
                   </p>
                 </div>
               </div>
@@ -141,6 +88,7 @@
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
+            {{globalArrow}}
           </div>
         </div>
       </div>

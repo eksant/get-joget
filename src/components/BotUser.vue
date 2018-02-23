@@ -10,14 +10,40 @@
           <div class="column">
             <img src="../assets/get-joget.png" alt="Logo Get Joget" style="height:96px;">
           </div>
+          <div class="column is-one-quarter">
+
+            <div class="dropdown is-hoverable is-large middle">
+              <div class="dropdown-trigger">
+                <button class="button is-primary is-inverted is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
+                  <span>Choose Room</span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item" v-for="room in rooms" :key="room.name">
+                    <a v-on:click.stop="change(room.videoId)" class="dropdown-item">{{room.name}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dropdown is-large middle">
+              <div class="dropdown-trigger">
+                <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
+                  <span>Play</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <button @click="logout" class="button is-danger">Logout</button>
       </div>
     </section>
 
     <div class="video-background">
       <div class="video-foreground">
-        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+        <!-- <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe> -->
+        <youtube :video-id="videoId" @ready="ready" @ended="ended" @playing="playing"></youtube>
       </div>
     </div>
 
@@ -37,13 +63,6 @@
                   <p>
                     <strong>{{player.player.name}}</strong><br>
                     <small>Score :</small> {{player.player.score}}<br>
-                    <small>
-                      <input type="text" name="" value="" v-model="player.player.moves">
-                      <div class="column is-1 is-primary" v-for='move in player.player.moves' style="background-color:burlywood;border:aqua;border-style:solid">
-                        {{move}}
-                      </div>
-
-                    </small>
                   </p>
                 </div>
               </div>
@@ -52,14 +71,28 @@
         </div>
       </div>
 
-      <!-- arrow game -->
+
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
-            {{globalArrow}}
+              <input autofocus type="text" name="" style="text-align:center" class="input" value="" @keyup="tes" v-model="keyArrow">
+              <br><br>
+              <div style="width: 48%; margin: auto" v-bind:class="{borderFalse: falseArrow}">
+                <div class="arrow">
+                  <div v-for="(number, index) in globalArrow" :key="index" class="puff-in-center" >
+                    <i v-if="number.num === leftCode" class="fa fa-arrow-circle-left" v-bind:style="{color: number.color}"></i>
+                    <i v-else-if="number.num === upCode" class="fa fa-arrow-circle-up" v-bind:style="{color:  number.color}"></i>
+                    <i v-else-if="number.num === rightCode" class="fa fa-arrow-circle-right" v-bind:style="{color:  number.color}"></i>
+                    <i v-else-if="number.num === downCode" class="fa fa-arrow-circle-down" v-bind:style="{color:  number.color}"></i>
+                  </div>
+                </div>
+              </div>
+
+            <!-- </div> -->
           </div>
         </div>
       </div>
+
     </section>
   </section>
 </template>
@@ -67,13 +100,65 @@
 export default {
   data: function () {
     return {
+      resultKeyArrow: '',
       players: '',
-      globalArrow: 'WASDASWSA',
-      moves: '',
-      score: 0
+      globalArrow: '',
+      isPlay: false,
+      keyArrow: '',
+      leftCode: 65,
+      upCode: 87,
+      rightCode: 68,
+      downCode: 83,
+      userInput: 0,
+      reset: [],
+      obj: '',
+      good: false,
+      falseArrow: false,
+      score: 0,
+      videoId: '4WD01RMtloI'
     }
   },
   methods: {
+    generate () {
+      this.resultKeyArrow = ''
+      this.array = []
+      this.keyArrow = ''
+      this.userInput = 0
+      const items = [this.leftCode, this.upCode, this.rightCode, this.downCode]
+      for (var i = 0; i < 6; i++) {
+        this.obj = {
+          num: items[Math.floor(Math.random() * items.length)],
+          color: 'black'
+        }
+        this.array.push(this.obj)
+      }
+      this.globalArrow = this.array
+    },
+    tes (event) {
+      this.falseArrow = false
+      if (this.globalArrow[this.userInput].num === event.keyCode) {
+        this.globalArrow[this.userInput].color = '#00ff00'
+        this.userInput++
+        let idx = this.globalArrow.findIndex((data) => {
+          return data.color === 'black'
+        })
+        if (idx === -1) {
+          this.good = true
+          this.userInput = 0
+          this.keyArrow = ''
+          this.generate()
+        }
+      } else {
+        this.falseArrow = true
+        this.globalArrow[this.userInput].color = 'red'
+        for (var i = 0; i < this.userInput; i++) {
+          this.globalArrow[i].color = 'black'
+        }
+        this.userInput = 0
+        this.keyArrow = ''
+        this.resultKeyArrow = ''
+      }
+    },
     checkIsLogin(dataPlayer) {
       // console.log('INI CEK',dataPlayer);
       let loginPlayer = dataPlayer.filter(e => {
@@ -94,91 +179,65 @@ export default {
       }
       this.checkIsLogin(result)
     },
-    create () {
-      // this.$db.ref("users").push({
-      //     email: 'eko@com',
-      //     password: '1123',
-      //     name: 'Eko',
-      //     score: 0
-      // });
+    ready (player) {
+      this.player = player
     },
-    update () {
-      this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").update({
-          score: 50
-      });
+    ended () {
+      this.stop()
     },
-    remove (key) {
-      this.$db.ref("users").child(key).remove();
+    playing () {
+      this.isPlay = true
+      this.player.playVideo()
     },
-    logout(){
-      let userId = localStorage.getItem('id')
-      this.$db.ref(`users/${userId}`).update({
-        isLogin : false
-      })
-      localStorage.clear()
-      this.$notify({
-        type: 'success',
-        text: 'Log out success'
-      })
-      this.$router.push({name: 'SignIn'})
+    change (el) {
+      this.videoId = el
+    },
+    stop () {
+      this.player.stopVideo()
+    },
+    pause () {
+      this.player.pauseVideo()
+    },
+    chooseRoom: function (selectRoom) {
+      this.room = selectRoom
     }
   },
-
-  // watch: {
-  //   players: [
-  //       function handle1 (val, oldVal) { /* ... */ },
-  //       function handle2 (val, oldVal) { /* ... */ }
-  //     ],
-  //
-  //     'players.moves': function (val) {
-  //       console.log(val);
-  //     },
-  //     deep: true
-  //
-  //   // {
-  //   //   handler: function (newVal,oldVal){
-  //   //     console.log(newVal.length);
-  //   //     if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
-  //   //       console.log(newVal.length-1);
-  //   //       this.moves = ''
-  //   //     }
-  //   //     if (newVal === this.globalArrow) {
-  //   //       this.moves = ''
-  //   //       this.score += 10
-  //   //     } else {
-  //   //       console.log(newVal);
-  //   //     }
-  //   //   },
-  //   //   deep: true
-  //   // }
-  // },
   watch: {
-    players: {
-      handler: function (newVal,oldVal){
+    keyArrow: function(newVal,oldVal) {
+      if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
+        this.keyArrow = ''
+      }
+      this.resultKeyArrow += newVal
+      if (this.resultKeyArrow.length === this.globalArrow.length) {
+        let addScore = Number(localStorage.getItem('score'))
+        addScore += 5
 
-          this.$db.ref("users").on("child_added", function (snapshot) {
-            console.log(snapshot.val());
-            // this.$db.ref("users").remove()
-            // this.$db.ref("users").push(snapshot.val())
-          })
+        localStorage.setItem('score', addScore)
 
-        // console.log(result);
-        // if (newVal[newVal.length-1] !== this.globalArrow[newVal.length-1]) {
-        //   console.log(newVal.length-1);
-        //   this.moves = ''
-        // }
-        // if (newVal === this.globalArrow) {
-        //   this.moves = ''
-        //   this.score += 10
-        // } else {
-        //   console.log(newVal);
-        // }
-      },
-      deep: true
+        let playerId = localStorage.getItem('id')
+
+        // console.log('PLAYER ID', playerId);
+
+        this.$db.ref(`users/${playerId}`).update({
+            score: addScore
+        });
+      } else {
+        console.log(newVal);
+      }
+    },
+    isPlay: function(newVal,oldVal) {
+      this.$db.ref('startGame').update({
+        startGame: true
+      })
     }
   },
-
-
+  computed: {
+    rooms: {
+      get () {
+        return this.$store.state.rooms
+      }
+    }
+  },
   created: function () {
   var users = this.$db.ref('users')
    let self = this
@@ -187,23 +246,79 @@ export default {
      self.firebaseConverter(playerData)
      console.log(snapshot.val());
    })
-   // this.create()
-   // this.remove('-L6-oiD-gpWadM3_IF56')
-   this.update()
-   // users.set({
-   //   email: 'tobi@gmail.com',
-   //   name: 'Lalala',
-   //   scofe: {}
-   // })
+
+   let startGame = this.$db.ref('startGame')
+   startGame.on('value', function (snapshot) {
+     let tampung = snapshot.val()
+     self.isPlay = tampung.startGame
+     // console.log(self.isPlay.startGame);
+   })
+
+   this.generate()
   }
 }
 </script>
 
 <style>
+.puff-in-center {
+  -webkit-animation: puff-in-center 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  animation: puff-in-center 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  }
+  @-webkit-keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+  }
+  @keyframes puff-in-center {
+  0% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+  }
+  .fa {
+    transition: 0.3s;
+    border: 0px;
+    font-size: 50px;
+    -webkit-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    -moz-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    padding: 10%;
+  }
+  .arrow {
+    display: inline-flex;
+    padding: 0.5% 0.5%;
+    background-color: azure;
+  }
+  .borderFalse {
+    border: 1px solid black;
+    border-color: red;
+  }
+
 .transparant {
   /* background: rgba(76, 175, 80, 0.8); */
-  opacity: 0.7;
-  filter: alpha(opacity=70);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 .content-game {
   position: relative;
