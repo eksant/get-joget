@@ -5,7 +5,7 @@ import RoomGame from '@/components/RoomGame'
 import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import SignIn from '@/components/SignIn'
-
+import BotUser from '@/components/BotUser'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +25,11 @@ export default new Router({
       path: '/signin',
       name: 'SignIn',
       component: SignIn
+    },
+    {
+      path: '/botuser',
+      name: 'BotUser',
+      component: BotUser
     },
     {
       meta: {},
