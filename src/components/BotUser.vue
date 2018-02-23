@@ -29,9 +29,16 @@
 
             <div class="dropdown is-large middle">
               <div class="dropdown-trigger">
-                <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
-                  <span>Play</span>
-                </button>
+                <!-- <div v-if=""> -->
+                  <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <span>Play</span>
+                  </button>
+                <!-- </div> -->
+                <!-- <div v-else>
+                  <button @click="stop" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <span>Stop</span>
+                  </button>
+                </div> -->
               </div>
             </div>
 
@@ -115,6 +122,7 @@ export default {
       good: false,
       falseArrow: false,
       score: 0,
+      videoPlay: false,
       videoId: '4WD01RMtloI'
     }
   },
@@ -186,8 +194,12 @@ export default {
       this.stop()
     },
     playing () {
-      this.isPlay = true
+      // console.log('PLAYYYYYYYYYYYYY')
+      let self = this
       this.player.playVideo()
+      this.$db.ref('startGame').update({
+        startGame: !self.isPlay
+      })
     },
     change (el) {
       this.videoId = el
@@ -224,11 +236,6 @@ export default {
       } else {
         console.log(newVal);
       }
-    },
-    isPlay: function(newVal,oldVal) {
-      this.$db.ref('startGame').update({
-        startGame: true
-      })
     }
   },
   computed: {
@@ -251,7 +258,12 @@ export default {
    startGame.on('value', function (snapshot) {
      let tampung = snapshot.val()
      self.isPlay = tampung.startGame
+     // console.log(self.isPlay)
      // console.log(self.isPlay.startGame);
+     if (self.isPlay) {
+       console.log('sdfsfds');
+       this.playing()
+     }
    })
 
    this.generate()
