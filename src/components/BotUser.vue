@@ -37,17 +37,13 @@
 
           </div>
         </div>
-<<<<<<< HEAD
-        <button @click="logout" class="button is-danger">Logout</button>
-=======
->>>>>>> coba merge
       </div>
     </section>
 
     <div class="video-background">
       <div class="video-foreground">
         <!-- <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe> -->
-        <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
+        <youtube :video-id="videoId" @ready="ready" @ended="ended" @playing="playing"></youtube>
       </div>
     </div>
 
@@ -81,12 +77,14 @@
           <div class="box transparant">
               <input autofocus type="text" name="" style="text-align:center" class="input" value="" @keyup="tes" v-model="keyArrow">
               <br><br>
-              <div v-bind:class="{borderFalse: falseArrow}" class="arrow">
-                <div v-for="(number, index) in globalArrow" :key="index" class="puff-in-center" >
-                  <i v-if="number.num === leftCode" class="fa fa-arrow-circle-left" v-bind:style="{color: number.color}"></i>
-                  <i v-else-if="number.num === upCode" class="fa fa-arrow-circle-up" v-bind:style="{color:  number.color}"></i>
-                  <i v-else-if="number.num === rightCode" class="fa fa-arrow-circle-right" v-bind:style="{color:  number.color}"></i>
-                  <i v-else-if="number.num === downCode" class="fa fa-arrow-circle-down" v-bind:style="{color:  number.color}"></i>
+              <div style="width: 48%; margin: auto" v-bind:class="{borderFalse: falseArrow}">
+                <div class="arrow">
+                  <div v-for="(number, index) in globalArrow" :key="index" class="puff-in-center" >
+                    <i v-if="number.num === leftCode" class="fa fa-arrow-circle-left" v-bind:style="{color: number.color}"></i>
+                    <i v-else-if="number.num === upCode" class="fa fa-arrow-circle-up" v-bind:style="{color:  number.color}"></i>
+                    <i v-else-if="number.num === rightCode" class="fa fa-arrow-circle-right" v-bind:style="{color:  number.color}"></i>
+                    <i v-else-if="number.num === downCode" class="fa fa-arrow-circle-down" v-bind:style="{color:  number.color}"></i>
+                  </div>
                 </div>
               </div>
 
@@ -105,22 +103,24 @@ export default {
       resultKeyArrow: '',
       players: '',
       globalArrow: '',
-    keyArrow: '',
-    leftCode: 65,
-    upCode: 87,
-    rightCode: 68,
-    downCode: 83,
-    userInput: 0,
-    reset: [],
-    obj: '',
-    good: false,
-    falseArrow: false,
+      isPlay: false,
+      keyArrow: '',
+      leftCode: 65,
+      upCode: 87,
+      rightCode: 68,
+      downCode: 83,
+      userInput: 0,
+      reset: [],
+      obj: '',
+      good: false,
+      falseArrow: false,
       score: 0,
       videoId: '4WD01RMtloI'
     }
   },
   methods: {
     generate () {
+      this.resultKeyArrow = ''
       this.array = []
       this.keyArrow = ''
       this.userInput = 0
@@ -182,7 +182,11 @@ export default {
     ready (player) {
       this.player = player
     },
+    ended () {
+      this.stop()
+    },
     playing () {
+      this.isPlay = true
       this.player.playVideo()
     },
     change (el) {
@@ -194,28 +198,8 @@ export default {
     pause () {
       this.player.pauseVideo()
     },
-<<<<<<< HEAD
-    remove (key) {
-      this.$db.ref("users").child(key).remove();
-<<<<<<< HEAD
-    },
-    logout(){
-      let userId = localStorage.getItem('id')
-      this.$db.ref(`users/${userId}`).update({
-        isLogin : false
-      })
-      localStorage.clear()
-      this.$notify({
-        type: 'success',
-        text: 'Log out success'
-      })
-      this.$router.push({name: 'SignIn'})
-=======
->>>>>>> coba merge
-=======
     chooseRoom: function (selectRoom) {
       this.room = selectRoom
->>>>>>> wait to get local storage
     }
   },
   watch: {
@@ -225,15 +209,26 @@ export default {
       }
       this.resultKeyArrow += newVal
       if (this.resultKeyArrow.length === this.globalArrow.length) {
-        // let score = localStorage.getItem('score') + 10
-        // localStorage.SetItem('score', score)
-        this.keyArrow = ''
-        this.$db.ref("users/-L6-ull_4RXqh0sUJ9vB").update({
-            score: 200
+        let addScore = Number(localStorage.getItem('score'))
+        addScore += 5
+
+        localStorage.setItem('score', addScore)
+
+        let playerId = localStorage.getItem('id')
+
+        // console.log('PLAYER ID', playerId);
+
+        this.$db.ref(`users/${playerId}`).update({
+            score: addScore
         });
       } else {
         console.log(newVal);
       }
+    },
+    isPlay: function(newVal,oldVal) {
+      this.$db.ref('startGame').update({
+        startGame: true
+      })
     }
   },
   computed: {
@@ -251,6 +246,14 @@ export default {
      self.firebaseConverter(playerData)
      console.log(snapshot.val());
    })
+
+   let startGame = this.$db.ref('startGame')
+   startGame.on('value', function (snapshot) {
+     let tampung = snapshot.val()
+     self.isPlay = tampung.startGame
+     // console.log(self.isPlay.startGame);
+   })
+
    this.generate()
   }
 }
