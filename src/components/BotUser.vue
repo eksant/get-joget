@@ -10,66 +10,13 @@
           <div class="column">
             <img src="../assets/get-joget.png" alt="Logo Get Joget" style="height:96px;">
           </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-          <div class="column is-one-quarter">
-
-            <div class="dropdown is-hoverable is-large middle">
-              <div class="dropdown-trigger">
-                <button class="button is-primary is-inverted is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
-                  <span>Choose Room</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                <div class="dropdown-content">
-                  <div class="dropdown-item" v-for="room in rooms" :key="room.name">
-                    <a v-on:click.stop="change(room.videoId)" class="dropdown-item">{{room.name}}</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown is-large middle">
-              <div class="dropdown-trigger">
-                <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
-                  <span>Play</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-
-          </div>
->>>>>>> before merge bikin bot user
-=======
->>>>>>> merge complete
-=======
->>>>>>> add botuser
         </div>
       </div>
     </section>
-
+    
     <div class="video-background">
       <div class="video-foreground">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
-=======
-        <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
->>>>>>> before merge bikin bot user
-=======
-        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
->>>>>>> merge complete
-=======
-        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
->>>>>>> add botuser
       </div>
     </div>
 
@@ -115,58 +62,8 @@
     </section>
   </section>
 </template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 <script>
 export default {
-=======
-
-=======
->>>>>>> merge complete
-<script>
-export default {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  data () {
-    return {
-      videoId: '4WD01RMtloI'
-    }
-  },
-  methods: {
-    ready (player) {
-      this.player = player
-    },
-    playing () {
-      this.player.playVideo()
-    },
-    change (el) {
-      this.videoId = el
-    },
-    stop () {
-      this.player.stopVideo()
-    },
-    pause () {
-      this.player.pauseVideo()
-    },
-    chooseRoom: function (selectRoom) {
-      this.room = selectRoom
-    }
-  },
-  computed: {
-    rooms: {
-      get () {
-        return this.$store.state.rooms
-      }
-    }
-=======
->>>>>>> before merge bikin bot user
-=======
->>>>>>> merge complete
-=======
-<script>
-export default {
->>>>>>> add botuser
   data: function () {
     return {
       players: '',
@@ -285,16 +182,6 @@ export default {
    //   name: 'Lalala',
    //   scofe: {}
    // })
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> merge done
->>>>>>> before merge bikin bot user
-=======
->>>>>>> merge complete
-=======
->>>>>>> add botuser
   }
 }
 </script>
@@ -305,18 +192,6 @@ export default {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-.middle {
-  padding-top: 30px;
-}
->>>>>>> before merge bikin bot user
-=======
->>>>>>> merge complete
-=======
->>>>>>> add botuser
 .content-game {
   position: relative;
   height: 500px;
