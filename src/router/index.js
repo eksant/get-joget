@@ -29,7 +29,7 @@ export default new Router({
     {
       path: '/botuser',
       name: 'BotUser',
-      compoennt: BotUser
+      component: BotUser
     },
     {
       meta: {},

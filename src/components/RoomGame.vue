@@ -12,10 +12,6 @@
           </div>
           <div class="column is-one-quarter">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Added choose room
             <div class="dropdown is-hoverable is-large middle">
               <div class="dropdown-trigger">
                 <button class="button is-primary is-inverted is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -33,8 +29,6 @@
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-=======
 
             <div class="dropdown is-large middle">
               <div class="dropdown-trigger">
@@ -51,92 +45,6 @@
         </div>
       </div>
     </section>
->>>>>>> Added choose room
-
-            <div class="dropdown is-large middle">
-              <div class="dropdown-trigger">
-                <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
-                  <span>Play</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-=======
-    <div class="video-background">
-      <div class="video-foreground">
-        <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
-      </div>
-    </div>
-
-    <!-- box player -->
-    <section class="section content-game">
-      <div class="columns is-mobile is-centered">
-<<<<<<< HEAD
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="column transparant">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Player">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Player #One</strong><br>
-                    <small>Score</small><br>
-                    <small>[A S D W D W]</small>
-                  </p>
-                </div>
->>>>>>> Added background video youtube
-              </div>
-            </div>
-
-          </div>
-        </div>
-<<<<<<< HEAD
-      </div>
-    </section>
 
     <div class="video-background">
       <div class="video-foreground">
@@ -149,13 +57,6 @@
       <div class="columns is-mobile is-centered">
 
         <div class="column transparant" v-for='player in players'>
-=======
-        <div class="column transparant">
->>>>>>> Added background video youtube
-=======
-
-        <div class="column transparant" v-for='player in players'>
->>>>>>> merge done
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -187,15 +88,7 @@
       <div class="columns is-mobile arrow-game">
         <div class="column is-half is-offset-one-quarter">
           <div class="box transparant">
-<<<<<<< HEAD
-<<<<<<< HEAD
             {{globalArrow}}
-=======
-
->>>>>>> Added background video youtube
-=======
-            {{globalArrow}}
->>>>>>> merge done
           </div>
         </div>
       </div>
@@ -246,18 +139,9 @@ export default {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 .middle {
   padding-top: 30px;
 }
-=======
->>>>>>> Added background video youtube
-=======
-.middle {
-  padding-top: 30px;
-}
->>>>>>> Added choose room
 .content-game {
   position: relative;
   height: 500px;

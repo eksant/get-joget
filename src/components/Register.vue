@@ -24,17 +24,8 @@
     },
     methods: {
       validateEmail(email) {
-<<<<<<< HEAD
-<<<<<<< HEAD
         var re =
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-=======
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
->>>>>>> jwt, auth system, validation
-=======
-        var re =
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
->>>>>>> add email validation
+          '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
         return re.test(String(email).toLowerCase());
       },
       register() {
@@ -60,29 +51,16 @@
           let idx = people.findIndex(function (element) {
             return (element.email == form.email)
           })
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> jwt, auth system, validation
-=======
-
->>>>>>> add email validation
           if (self.validateEmail(self.form.email) == true) {
             if (idx == -1) {
               tableUser.push(self.form)
                 .then(payload => {
                   console.log('register success')
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> add email validation
                   self.$notify({
                     type: 'success',
                     text: 'Register success'
                   })
-<<<<<<< HEAD
                 })
                 .catch(error => {
                   console.log(error.message)
@@ -104,39 +82,6 @@
               type: 'error',
               text: 'Email format you entered is wrong'
             })
-=======
-
-                  // this.$notify({
-                  //   type: 'success',
-                  //   text: 'Register success'
-                  // })
-=======
->>>>>>> add email validation
-                })
-                .catch(error => {
-                  console.log(error.message)
-                  self.$notify({
-                    type: 'error',
-                    text: 'An error occured'
-                  })
-                })
-            } else {
-              console.log('Email you entered already exists')
-              self.$notify({
-                type: 'error',
-                text: 'Email you entered already exists'
-              })
-            }
-          } else {
-            console.log('Email format you entered is wrong')
-<<<<<<< HEAD
->>>>>>> jwt, auth system, validation
-=======
-            self.$notify({
-              type: 'error',
-              text: 'Email format you entered is wrong'
-            })
->>>>>>> add email validation
           }
         })
       }
