@@ -3,11 +3,14 @@
     <button type="button" name="button" @click="generate">Generate Arrow</button>
     <input type="text" name="" value="" @keyup="tes" v-model="keyArrow">
     <br><br>
-    <div class="arrow puff-in-center" v-for="(number, index) in numbers" :key="index">
-      <i v-if="number === 1" class="fa fa-arrow-circle-left" style="font-size:35px;" v-bind:value="leftCode" :style="{color: leftColor}"></i>
-      <i v-else-if="number === 2" class="fa fa-arrow-circle-up" style="font-size:35px;" v-bind:style="{color: upColor}"></i>
-      <i v-else-if="number === 3" class="fa fa-arrow-circle-right" style="font-size:35px;" v-bind:style="{color: rightColor}"></i>
-      <i v-else-if="number === 4" class="fa fa-arrow-circle-down" style="font-size:35px;" v-bind:style="{color: downColor}"></i>
+    <div v-bind:class="{borderFalse: falseArrow}" class="arrow">
+      <div v-for="(number, index) in numbers" :key="index" class="puff-in-center">
+        <i v-if="number.num === leftCode" class="fa fa-arrow-circle-left" v-bind:style="{color: number.color}"></i>
+        <i v-else-if="number.num === upCode" class="fa fa-arrow-circle-up" v-bind:style="{color:  number.color}"></i>
+        <i v-else-if="number.num === rightCode" class="fa fa-arrow-circle-right" v-bind:style="{color:  number.color}"></i>
+        <i v-else-if="number.num === downCode" class="fa fa-arrow-circle-down" v-bind:style="{color:  number.color}"></i>
+      </div>
+      <span v-show="good">Nice !</span>
     </div>
   </div>
 </template>
@@ -21,47 +24,53 @@ export default {
       keyArrow: '',
       leftCode: 65,
       upCode: 87,
-      righCode: 68,
+      rightCode: 68,
       downCode: 83,
-      leftColor: '',
-      upColor: '',
-      rightColor: '',
-      downColor: ''
+      userInput: 0,
+      reset: [],
+      obj: '',
+      good: false,
+      falseArrow: false
     }
   },
   methods: {
-    generate (event) {
+    generate () {
       this.array = []
-      this.leftColor = ''
-      this.upColor = ''
-      this.rightColor = ''
-      this.downColor = ''
       this.keyArrow = ''
+      this.userInput = 0
 
+      const items = [this.leftCode, this.upCode, this.rightCode, this.downCode]
       for (var i = 0; i < 6; i++) {
-        this.array.push(Math.floor(Math.random() * 4) + 1)
+        this.obj = {
+          num: items[Math.floor(Math.random() * items.length)],
+          color: 'black'
+        }
+        this.array.push(this.obj)
       }
       this.numbers = this.array
     },
     tes (event) {
-      for (var i = 0; i < this.numbers.length; i++) {
-        if (this.numbers[i] === 1) {
-          if (event.keyCode === this.leftCode) {
-            this.leftColor = 'lightgreen'
-          }
-        } else if (this.numbers[i] === 2) {
-          if (event.keyCode === this.upCode) {
-            this.upColor = 'lightgreen'
-          }
-        } else if (this.numbers[i] === 3) {
-          if (event.keyCode === this.righCode) {
-            this.rightColor = 'lightgreen'
-          }
-        } else if (this.numbers[i] === 4) {
-          if (event.keyCode === this.downCode) {
-            this.downColor = 'lightgreen'
-          }
+      this.falseArrow = false
+      if (this.numbers[this.userInput].num === event.keyCode) {
+        this.numbers[this.userInput].color = 'lightgreen'
+        this.userInput++
+        let idx = this.numbers.findIndex((data) => {
+          return data.color === 'black'
+        })
+        if (idx === -1) {
+          this.good = true
+          this.userInput = 0
+          this.keyArrow = ''
+          this.generate()
         }
+      } else {
+        this.falseArrow = true
+        this.numbers[this.userInput].color = 'red'
+        for (var i = 0; i < this.userInput; i++) {
+          this.numbers[i].color = 'black'
+        }
+        this.userInput = 0
+        this.keyArrow = ''
       }
     }
   }
@@ -71,8 +80,8 @@ export default {
 <style lang="css" scoped>
 
 .puff-in-center {
-  -webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-  animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  -webkit-animation: puff-in-center 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  animation: puff-in-center 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
   }
 
   @-webkit-keyframes puff-in-center {
@@ -109,17 +118,23 @@ export default {
   }
 
   .fa {
-    transition: 0.5s;
+    transition: 0.3s;
     border: 0px;
+    font-size: 50px;
     -webkit-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
     -moz-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
     box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    padding: 10%;
   }
 
   .arrow {
     display: inline-flex;
-    padding: 0.5% 1%;
-    color: white;
-    background-color: rgba(0,0,0, 0.5);
+    padding: 0.5% 0.5%;
+    background-color: azure;
+  }
+
+  .borderFalse {
+    border: 1px solid black;
+    border-color: red;
   }
 </style>
