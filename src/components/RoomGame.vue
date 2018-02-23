@@ -13,6 +13,9 @@
           <div class="column is-one-quarter">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Added choose room
             <div class="dropdown is-hoverable is-large middle">
               <div class="dropdown-trigger">
                 <button class="button is-primary is-inverted is-outlined" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -30,6 +33,25 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
+=======
+
+            <div class="dropdown is-large middle">
+              <div class="dropdown-trigger">
+                <button @click="playing" class="button is-success is-outlined" aria-haspopup="true" aria-controls="dropdown-menu3">
+                  <span>Play</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+>>>>>>> Added choose room
 
             <div class="dropdown is-large middle">
               <div class="dropdown-trigger">
@@ -42,7 +64,7 @@
 =======
     <div class="video-background">
       <div class="video-foreground">
-        <iframe src="https://www.youtube.com/embed/4WD01RMtloI?controls=0&showinfo=0&rel=0&autoplay=0&loop=0&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>
+        <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
       </div>
     </div>
 
@@ -216,11 +238,17 @@ export default {
   filter: alpha(opacity=70);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .middle {
   padding-top: 30px;
 }
 =======
 >>>>>>> Added background video youtube
+=======
+.middle {
+  padding-top: 30px;
+}
+>>>>>>> Added choose room
 .content-game {
   position: relative;
   height: 500px;
