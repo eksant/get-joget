@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "buefy": "^0.6.3",
+    "buefy": "^0.7.2",
     "chai": "^4.1.2",
     "dotenv": "^5.0.0",
     "firebase": "^4.10.0",
